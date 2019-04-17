@@ -5,8 +5,8 @@ import { CharacterList } from "../components";
 import { getPeople } from "../actions";
 
 class CharacterListView extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
   }
 
   componentDidMount() {
@@ -14,16 +14,25 @@ class CharacterListView extends React.Component {
   }
 
   render() {
-    if (this.props.fetching) {
-      <p>Loading...</p>
-    }
     return (
-      <div className="CharactersList_wrapper">
+      <div>
+        { this.props.fetching ? 
+        (<h3>Loading</h3>) : (
         <CharacterList characters={this.props.characters} />
+        )}   
       </div>
-    );
+    )  
   }
 }
+
+   // if (this.props.fetching) {
+    //   <p>Loading...</p>
+    // }
+    // return (
+    //   <div className="CharactersList_wrapper">
+    //     <CharacterList characters={this.props.characters} />
+    //   </div>
+    // );
 
 const mapStateToProps = state => ({
   characters: state.characters,
