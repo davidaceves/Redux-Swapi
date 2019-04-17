@@ -10,4 +10,4 @@ export const getPeople = () => dispatch => {
         .get('https://swapi.co/api/people/')
         .then(res => dispatch({ type: FETCH_SUCCESS, payload: res.data }))
         .catch(err => dispatch({ type: FETCH_FAILURE, payload: err}));
-}
+};
