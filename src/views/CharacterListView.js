@@ -14,29 +14,20 @@ class CharacterListView extends React.Component {
   }
 
   render() {
+    if (this.props.fetching) {
+      <h3>Loading...</h3>
+    }
     return (
-      <div>
-        { this.props.fetching ? 
-        (<h3>Loading</h3>) : (
+      <div className="CharactersList_wrapper">
         <CharacterList characters={this.props.characters} />
-        )}   
       </div>
-    )  
+    );    
   }
 }
 
-   // if (this.props.fetching) {
-    //   <p>Loading...</p>
-    // }
-    // return (
-    //   <div className="CharactersList_wrapper">
-    //     <CharacterList characters={this.props.characters} />
-    //   </div>
-    // );
-
 const mapStateToProps = state => ({
-  characters: state.characters,
-  fetching: state.fetching,
+  characters: state.charsReducer.characters,
+  fetching: state.charsReducer.fetching
 })
 
 
